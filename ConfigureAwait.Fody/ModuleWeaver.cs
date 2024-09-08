@@ -147,7 +147,14 @@ public partial class ModuleWeaver : BaseModuleWeaver
         // Change TaskAwaiter to ConfiguredTaskAwaiter
         if (declaringType.FullName == "System.Runtime.CompilerServices.TaskAwaiter")
         {
-            var newOperand = configuredTaskAwaiterTypeDef.Method(method);
+            //var newOperand = configuredTaskAwaiterTypeDef.Method(method);
+            //if (newOperand != null)
+            //{
+            //    instruction.OpCode = OpCodes.Call;
+            //    instruction.Operand = ModuleDefinition.ImportReference(newOperand);
+            //}
+
+            var newOperand = _myCustomAwaiterTypeDef.Method(method);
             if (newOperand != null)
             {
                 instruction.OpCode = OpCodes.Call;

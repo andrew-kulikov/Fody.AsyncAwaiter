@@ -34,9 +34,10 @@ public partial class ModuleWeaver
 
             ilProcessor.InsertBefore(instruction,
                 // true or false
-                Instruction.Create(configureAwaitValue ? OpCodes.Ldc_I4_1 : OpCodes.Ldc_I4_0),
+                //Instruction.Create(configureAwaitValue ? OpCodes.Ldc_I4_1 : OpCodes.Ldc_I4_0),
                 // Call ConfigureAwait
-                Instruction.Create(OpCodes.Callvirt, configureAwait),
+                //Instruction.Create(OpCodes.Callvirt, configureAwait),
+                Instruction.Create(OpCodes.Call, configureAwait),
                 // Store in variable
                 Instruction.Create(OpCodes.Stloc, awaitableVar),
                 // Load variable
